@@ -45,4 +45,15 @@ class HttpService
         $ql->setHtml($html);
         return $ql;
     }
+
+    public static function postRaw(QueryList $ql,$url,$args = null,$otherArgs = [])
+    {
+        $otherArgs = array_merge([
+            'cookies' => self::getCookieJar(),
+            'verify' => false
+        ],$otherArgs);
+        $html = GHttp::postRaw($url,$args,$otherArgs);
+        $ql->setHtml($html);
+        return $ql;
+    }
 }

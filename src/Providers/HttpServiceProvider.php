@@ -23,5 +23,9 @@ class HttpServiceProvider implements ServiceProviderContract
         $kernel->bind('post',function (...$args){
             return HttpService::post($this,...$args);
         });
+
+        $kernel->bind('postRaw',function (...$args){
+            return HttpService::postRaw($this,...$args);
+        });
     }
 }
